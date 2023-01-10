@@ -1,0 +1,28 @@
+/* navbar.css */
+
+.navbar {
+	font-family: 'Roboto', sans-serif;
+	color: black;
+	background-color: gray;
+	display: block;
+	padding: 10px;
+	transition: 0.5s;
+}
+
+.navbar a {
+	transition: 0.5s;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+	color: white;
+	padding: 0px 15px;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	background-color: darkgrey;
+}
+
+.navbar a.right {
+	float: right;
+}

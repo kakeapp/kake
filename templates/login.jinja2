@@ -1,0 +1,26 @@
+{% extends "base.jinja2" %}
+{% block title %}Login {% endblock %}
+
+{% block body %}
+	{% if errr %}
+	<h3>This email id does not exists</h3>
+	{% endif %}
+
+	{% if wrong_passwd %}
+	<h3>Your email id or password is wrong, please try again</h3>
+	{% endif %}
+    <form action="/login" method="post" id="loginForm">
+
+		<!-- emailid -->
+		<label for"emailid">Email ID: </label>
+		<input name="emailid" placeholder="hello.world@gmail.com" required>
+		<br>
+
+		<!-- passwd -->
+		<label for"passwd">Password: </label>
+		<input type="password" name="passwd" placeholder="H#ello@*[120" required>
+		<br>
+
+		<button type="submit" form="loginForm">Login</button>
+    </form>
+{% endblock %}

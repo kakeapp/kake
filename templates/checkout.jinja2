@@ -1,0 +1,12 @@
+{% extends "base.jinja2" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block body %}
+{% if success %}
+Your checkout was successful
+{% else %}
+Sorry, your checkout was not sucessful
+{% endif %}
+
+{% endblock %}

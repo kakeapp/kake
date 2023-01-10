@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>404 not found!</title>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    </head>
+    <body>
+        {% include 'navbar.jinja2' %}
+        <h1>404 not found!</h1>
+        <h3>Url:</h3>
+        <h4>{{ url }} is not found</h4>
+    </body>
+</html>

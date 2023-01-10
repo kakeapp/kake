@@ -1,0 +1,29 @@
+{% extends "base.jinja2" %}
+{% block title %}Sign Up{% endblock %}
+
+{% block body %}
+	{% if errr %}
+	<h3>This email id already exists</h3>
+	{% endif %}
+
+<form action="/sign-up" method="post" id="signupForm">
+<!-- username -->
+<label for"username">Username: </label>
+<input name="username" placeholder="Hello World!" required>
+<br>
+
+<!-- emailid -->
+<label for"emailid">Email ID: </label>
+<input name="emailid" placeholder="hello.world@gmail.com" required>
+<br>
+
+<!-- passwd -->
+<label for"passwd">Password: </label>
+<input type="password" name="passwd" placeholder="H#ello@*[120" required>
+<br>
+
+<!-- submit button -->
+<button type="submit" form="signupForm">Sign Up!</button>
+</form>
+
+{% endblock %}

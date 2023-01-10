@@ -1,0 +1,63 @@
+{% extends "base.jinja2" %}
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+{% if cakes %}
+	<h1 class="cost">Cost: {{ cost }} <i class="fas fa-rupee-sign"></i></h1>
+	<ul class="cakelist">
+		{% for cake in cakes %}
+			<li class="styp hidden">
+				<span style="display:none" class="cakeId">{{ cakes[cake]['data'][0] }}</span>
+				<span>{{ cakes[cake]['data'][2] }}</span><br>
+				<img src="{{ url_for('static', filename='img/'+cakes[cake]['data'][1]) }}"><br>
+				<label>{{ cakes[cake]['data'][3] }}<i class="fas fa-rupee-sign"></i></label><br>
+				<button class="remove-cart">{{ cakes[cake]['qty'] }} <i class="fas fa-minus-circle"></i></button><br>
+			</li>
+		{% endfor %}
+	</ul>
+	<div style="text-align: center">
+		<button class="send-token">
+			Send Token
+		</button>
+	</div>
+	<form action="/checkout" method="POST" id="checkoutForm">
+		<label for="token">Checkout Token: </label>
+		<input name="token" placeholder="gwd#432" required>
+		<button type="submit" form="checkoutForm">Checkout</button>
+	</form>
+	<button class="next-cake">
+		<i class="fas fa-arrow-alt-circle-up"></i>
+	</button>
+{% else %}
+Your cart is empty
+{% endif %}
+
+<script defer>
+	document.querySelector(".next-cake").addEventListener('click', (ev) => {
+		window.scroll(0, 0);  // reset the scroll position to the top left of the document.
+	})
+	document.querySelectorAll("button.send-token").forEach((elm) => {
+		elm.addEventListener('click', (ev) => {
+			const response = (async function() { await fetch("/send-token") })();
+
+			if (!response.ok) {
+				console.log(response)
+			}
+		});
+	});
+	document.querySelectorAll("button.remove-cart").forEach((elm) => {
+		elm.addEventListener('click', (ev) => {
+			let spanelem = ev.target.parentElement.querySelector("span.cakeId");
+			if (spanelem) {
+				const response = (async function() { await fetch("/remove-cake/"+spanelem.textContent) })();
+
+				if (!response.ok) {
+					console.log(response)
+				}
+			}
+			console.log(elm.innerText);
+			elm.innerText = (elm.innerText - 1);
+		});
+	});
+</script>
+{% endblock %}

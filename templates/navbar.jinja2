@@ -1,0 +1,15 @@
+<nav class="navbar">
+	<a href="{{ url_for('landing_page') }}#home">Home</a>
+	<a href="{{ url_for('cakes') }}">Cakes</a>
+	<a href="{{ url_for('landing_page') }}#FAQ">FAQ</a>
+	<a href="{{ url_for('landing_page') }}#about-us">About us</a>
+	{% if not session["signIn"] %}
+	<a href="{{ url_for('login') }}" class="right">Login</a>
+	<a href="{{ url_for('signup') }}" class="right">Sign up</a>
+	{% else %}
+	<a href="{{ url_for('logout') }}" class="right"><i class="fas fa-sign-out-alt"></i></a>
+	<a href="{{ url_for('cart') }}" class="right"><i class="fas fa-shopping-cart"></i>
+	{{ nc }}
+	</a>
+	{% endif %}
+</nav>

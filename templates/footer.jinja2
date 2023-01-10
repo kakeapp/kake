@@ -1,0 +1,68 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/footer.css') }}">
+<footer>
+    <div class="row">
+        <div class="col">
+            <img src="{{ url_for('static',filename='cake.png') }}" class="logo">
+            <p class="Foo">kake</p>
+            <p>Delicious cakes for all occasion at your doorstep!</p>
+        </div>
+        <div class="col">
+            <h5>Contact us <div class="underline"><span></span></div> </h5>
+            <p>maybe try us?</p>
+            <p class="email-id">CustomerCare.Kake@gmail.com</p>
+            <h6>+91 - 8888442244</h>
+        </div>
+        <div class="col">
+            <h5>Links <div class="underline"><span></span></div></h5>
+            <ul>
+              <li><a href="{{ url_for('landing_page') }}#home">Home</a></li>
+	      <li><a href="{{ url_for('cakes') }}">Cakes</a></li>
+	      <li><a href="{{ url_for('landing_page') }}#FAQ">FAQ</a></li>
+	      <li><a href="{{ url_for('landing_page') }}#about-us">About us</a></li>
+	      {% if not session["signIn"] %}
+	      <li><a href="{{ url_for('login') }}" class="right">Login</a></li>
+	      <li><a href="{{ url_for('signup') }}" class="right">Sign up</a></li>
+	      {% else %}
+	      <li><a href="{{ url_for('logout') }}" class="right"><i class="fas fa-sign-out-alt"></i></a></li>
+	      <li><a href="{{ url_for('cart') }}" class="right"><i class="fas fa-shopping-cart"></i>
+		  {{ nc }}
+	      </a></li>
+	      {% endif %}
+	   
+            </ul>
+        </div>
+        <!-- <div class="col"> -->
+        <!--     <h5>Newsletter <div class="underline"><span></span></div></h5> -->
+        <!--     <form id="News-letter" action="/home/pain/Documents/CS_Proj/accounts.html"> -->
+        <!--         <i class="far fa-envelope"></i> -->
+        <!--         <input type="Email" placeholder="Enter your email ID" required> -->
+        <!--         <button type="=submit"><i class="fas fa-arrow-right"></i></button> -->
+        <!--     </form> -->
+        <!-- </div> -->       
+    </div> 
+
+  <div class="SOC_icons">
+        <div class="wrapper">
+            <div class="button">
+                    <div class="icon"><i class="fab fa-facebook-f"></i></div>
+                    <span>Facebook</span>
+                </div>
+                <div class="button">
+                    <div class="icon"><i class="fab fa-instagram fa-xl"></i></div>
+                    <span>Instagram</span>
+                </div>
+                <div class="button">
+                    <div class="icon"><i class="fab fa-twitter"></i></div>
+                    <span>Twitter</span>
+                </div>
+                <div class="button">
+                    <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                    <span>whatsapp</span>
+                </div>
+	</div>
+        </div>
+    </div>
+    </div>
+    <hr>
+    <p class="copyright">Kake © 2022 - All Rights Reserved</p>
+</footer>

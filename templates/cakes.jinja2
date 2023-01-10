@@ -1,0 +1,45 @@
+{% extends "base.jinja2" %}
+{% block title %}Cakes {% endblock %}
+{% block body %}
+	{% if not user_verified %}
+	<span class="cost">Please check your email and get verified</span>
+	{% endif %}
+
+	{% if cakes %}
+	<ul class="cakelist">
+		{% for cake in cakes %}
+			<li class="styp hidden">
+				<span style="display:none" class="cakeId">{{ cake[0] }}</span>
+				<span>{{ cake[2] }}</span><br>
+				<img src="{{ url_for('static', filename='img/'+cake[1]) }}"><br>
+				<label>{{ cake[3] }} <i class="fas fa-rupee-sign"></i></label><br>
+				<button class="add-cart"><i class="fa fa-cart-plus"></i></button><br>
+			</li>
+		{% endfor %}
+	</ul>
+	<button class="next-cake">
+		<i class="fas fa-arrow-alt-circle-up"></i>
+	</button>
+	{% else %}
+	No cakes available
+	sorry
+	{% endif %}
+
+<script defer>
+	document.querySelector(".next-cake").addEventListener('click', (ev) => {
+		window.scroll(0, 0);  // reset the scroll position to the top left of the document.
+	})
+	document.querySelectorAll("button.add-cart").forEach((elm) => {
+		elm.addEventListener('click', (ev) => {
+			let spanelem = ev.target.parentElement.querySelector("span.cakeId");
+			if (spanelem) {
+				const response = (async function() { await fetch("/add-cake/"+spanelem.textContent) })();
+
+				if (!response.ok) {
+					console.log(response)
+				}
+			}
+		});
+	});
+</script>
+{% endblock %}
