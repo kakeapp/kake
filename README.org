@@ -7,23 +7,25 @@ A app about Kake 🎂
 
 ** To run
   - =python wsgi.py= : run prod server
-  - =gunicorn main:app= : run dev server
+  - =waitress-serve --listen=127.0.0.1:5000 main:app= : run dev server
 
 ** Code Analysis
 #+begin_src sh
-28 text files.
-28 unique files.
-10 files ignored.
+      31 text files.
+      23 unique files.
+      26 files ignored.
 
-github.com/AlDanial/cloc v 1.90  T=0.03 s (668.6 files/s, 51579.3 lines/s)
+github.com/AlDanial/cloc v 1.96  T=0.04 s (516.4 files/s, 36147.3 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-CSS                              4            120             41            470
-Jinja Template                  10             56              0            408
-Python                           5             74             80            266
+CSS                              4            117             41            475
+Jinja Template                  11             32              0            348
+Python                           5             90            125            297
+SQL                              1              5              0             40
 JavaScript                       1              2              1             25
+Text                             1              0              0             12
 -------------------------------------------------------------------------------
-SUM:                            20            252            122           1169
+SUM:                            23            246            167           1197
 -------------------------------------------------------------------------------
 #+end_src
